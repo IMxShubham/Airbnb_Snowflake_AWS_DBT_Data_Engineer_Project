@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: hosts
+    columns:
+      - name: host_id
+        data_tests:
+          - not_null
+          - unique
+
+      - name: host_created_at
+        data_tests:
+          - not_null
+      

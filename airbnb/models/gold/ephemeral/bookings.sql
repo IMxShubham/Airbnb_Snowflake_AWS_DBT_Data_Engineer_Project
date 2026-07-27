@@ -14,4 +14,4 @@ WITH bookings AS
     FROM 
         {{ ref("obt") }}
 )
-SELECT * FROM bookings
+SELECT DISTINCT * FROM bookings
