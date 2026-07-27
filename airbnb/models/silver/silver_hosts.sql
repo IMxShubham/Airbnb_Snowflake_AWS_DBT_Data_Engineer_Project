@@ -6,6 +6,18 @@
 }}
 
 
+WITH latest_hosts AS (
+
+SELECT
+    *,
+    ROW_NUMBER() OVER (
+        PARTITION BY host_id
+        ORDER BY created_at DESC 
+    ) AS rn
+FROM {{ ref('bronze_hosts') }}
+)
+
+
 SELECT 
     host_id,
     replace(host_name, ' ', '_') AS host_name,
@@ -22,5 +34,16 @@ SELECT
          ' ', '_')
      AS response_rate_quality,
     created_at
-FROM 
-    {{ ref("bronze_hosts")}}
+FROM latest_hosts
+WHERE rn = 1
+    
+
+
+
+
+
+
+
+
+
+

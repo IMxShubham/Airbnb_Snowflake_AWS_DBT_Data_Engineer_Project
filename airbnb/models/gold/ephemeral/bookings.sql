@@ -6,7 +6,7 @@
 
 WITH bookings AS
 (
-    SELECT 
+    SELECT
         booking_id,
         booking_date,
         booking_status,

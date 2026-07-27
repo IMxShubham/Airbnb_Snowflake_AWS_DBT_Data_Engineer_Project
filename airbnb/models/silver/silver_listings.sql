@@ -5,6 +5,18 @@
 ) }}
 
 
+WITH latest_listings AS (
+
+SELECT
+    *,
+    ROW_NUMBER() OVER (
+        PARTITION BY listing_id
+        ORDER BY created_at DESC 
+    ) AS rn
+FROM {{ ref('bronze_listings') }}
+)
+
+
 SELECT
     listing_id,
     host_id,
@@ -18,5 +30,17 @@ SELECT
     price_per_night,
     {{ tag("price_per_night") }} AS price_per_night_tag,
     created_at  
-FROM
-    {{ ref("bronze_listings") }}
+FROM latest_listings
+WHERE rn = 1
+
+
+
+
+
+
+
+
+
+
+
+

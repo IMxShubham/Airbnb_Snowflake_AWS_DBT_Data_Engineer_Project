@@ -4,6 +4,17 @@
         unique_key='booking_id'
 ) }}
 
+WITH latest_bookings AS (
+
+SELECT
+    *,
+    ROW_NUMBER() OVER (
+        PARTITION BY booking_id
+        ORDER BY created_at DESC 
+    ) AS rn
+FROM {{ ref('bronze_bookings') }}
+)
+
 
 SELECT
     booking_id,
@@ -14,4 +25,17 @@ SELECT
     cleaning_fee,
     booking_status,
     created_at
-FROM {{ ref("bronze_bookings") }}
+FROM latest_bookings
+WHERE rn = 1
+
+
+
+
+
+
+
+
+
+
+
+

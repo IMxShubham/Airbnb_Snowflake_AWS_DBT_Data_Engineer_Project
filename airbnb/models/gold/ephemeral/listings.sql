@@ -17,4 +17,4 @@ WITH listings AS
     FROM 
         {{ ref("obt") }}
 )
-SELECT * FROM listings
+SELECT DISTINCT * FROM listings

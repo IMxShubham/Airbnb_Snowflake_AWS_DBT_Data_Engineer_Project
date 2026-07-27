@@ -1,13 +1,3 @@
-
-#models:
-#  - name: bronze
-#    config:
-#      materialized: view
-#  - name: demo
-#    config:
-#      materialized: table
-
-
 models:
   - name: bronze_hosts
     description: hosts models
@@ -24,12 +14,17 @@ models:
     config:
       materialized: table    
 
-  - name: silver_bookings
-    description: bookings models
+  - name: silver_hosts
+    description: hosts models
     config:
       materialized: table
 
   - name: silver_listings
+    description: listings models
+    config:
+      materialized: table
+
+  - name: silver_bookings
     description: bookings models
     config:
       materialized: table

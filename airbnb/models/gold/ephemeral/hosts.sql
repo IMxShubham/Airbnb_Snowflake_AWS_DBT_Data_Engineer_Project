@@ -16,4 +16,4 @@
     FROM 
         {{ ref("obt") }}
  ) 
-SELECT * FROM hosts  
+SELECT DISTINCT * FROM hosts  
