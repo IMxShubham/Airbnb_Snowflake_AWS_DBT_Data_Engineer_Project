@@ -1,3 +1,4 @@
+version: 2
 
 sources:
   - name: staging
@@ -8,3 +9,10 @@ sources:
       - name: bookings
       - name: hosts
 
+  - name: gold
+    database: airbnb
+    schema: gold
+    tables:
+      - name: dim_bookings
+      - name: dim_listings
+      - name: dim_hosts
