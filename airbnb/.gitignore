@@ -1,6 +1,22 @@
-
+# dbt
 target/
 dbt_packages/
-logs/
-.env
 dbt_internal_packages/
+logs/
+
+# Python
+.env
+snow_vr/
+__pycache__/
+*.pyc
+
+# dbt profiles
+profiles.yml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
